@@ -14,8 +14,8 @@ const { NotImplementedError } = require('../extensions/index.js');
 
  function getSeason(date) {
   if (date) {
-    if (typeof date.getDate() !== 'number' || typeof date.getMonth() !== 'number' || typeof date.getFullYear() !== 'number') {
-      return Error("Invalid date!")
+    if (typeof date.getDate() !== 'number' && typeof date.getMonth() !== 'number' && typeof date.getFullYear() !== 'number') {
+      throw new Error("Invalid date!")
     } else {
       let day = date.getDate(); 
       let month = date.getMonth();

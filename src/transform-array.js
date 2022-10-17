@@ -57,7 +57,7 @@ const { NotImplementedError } = require('../extensions/index.js');
         }
     }
     return resArr;
-  } else return Error("'arr' parameter must be an instance of the Array!")
+  } else throw new Error("'arr' parameter must be an instance of the Array!")
 }
 
 module.exports = {

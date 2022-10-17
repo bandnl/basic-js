@@ -19,7 +19,7 @@ const chainMaker = {
     if (position > 0 && position <= (this.result.length) &&  Number.isInteger(position)) {
       let carbage = this.result.splice (position - 1, 1);
                return this;
-    } else return Error("You can't remove incorrect link!")
+    } else throw new Error("You can't remove incorrect link!")
   },
   reverseChain() {
     this.result.reverse ();
