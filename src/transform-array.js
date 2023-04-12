@@ -16,33 +16,25 @@ const { NotImplementedError } = require('../extensions/index.js');
  function transform(arr) {
   if (arr instanceof Array) {
     let resArr = [];
-    for (let key=0; key<arr.length; key++) {
-      if (typeof arr[key] === 'number') {
-        if (isNaN(arr[key])) {
-          key++;
-        } else {
-        resArr.push (+arr[key]);
-        }
+    for (let key = 0; key < arr.length; key++) {
+      if (arr[key] !== '--double-next' && arr[key] !== '--double-prev' && arr[key] !== '--discard-prev' && arr[key] !== '--discard-next') {
+        resArr.push(arr[key]);
       } else {
-        if (typeof arr[key] === 'string') {
-          let curVal = arr[key];
           switch (arr[key]) {
             case '--double-next':
               if (arr[key + 1]) {
-                curVal = arr.slice (arr[key + 1], arr[key + 2]);
-                resArr.push (+curVal);
+                resArr.push(arr[key + 1]);
               }
               break;
-            
+
             case '--double-prev':
-              if (arr.indexOf(arr[key]) != 0 ) { 
-                curVal = arr.slice (arr[key - 2], arr[key - 1]);
-                resArr.push (+curVal);
+              if (arr.indexOf(arr[key]) != 0 && resArr[resArr.length - 1] === arr[key - 1]) {
+                resArr.push(resArr[resArr.length - 1]);
               }
               break;
-            
+
             case '--discard-prev':
-              if (arr.indexOf(arr[key]) != 0 ) {
+              if (arr.indexOf(arr[key]) != 0 && resArr[resArr.length - 1] === arr[key - 1]) {
                 resArr.pop ();
               }
               break;
@@ -53,7 +45,6 @@ const { NotImplementedError } = require('../extensions/index.js');
               }
               break;
             }
-          } else continue;
         }
     }
     return resArr;

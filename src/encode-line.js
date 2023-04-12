@@ -12,34 +12,19 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
  function encodeLine(str) {
   let arr = str.split('');
-  let result = [];
-  arr = arr.sort();
-  let first;
-  let last;
-  let minus;
-
-  for (let key = 0; key<arr.length; ++key) {
-    first = arr.indexOf(arr[key]);
-    last = arr.lastIndexOf(arr[key]);
-    minus = last - first + 1;
-
-    if (!first) {
-      minus = last + 1;
-    } 
-    if (first === 1) {
-      minus = last
-    } 
-    if (!minus) {
-      minus = 1
+  let count = 1;
+  let resStr = '';
+  arr.forEach((v, i) => {
+    if (v === arr[i + 1]) {
+      count++;
+    } else {
+      if (count !== 1) {
+        resStr += count + v;
+      } else resStr += v;
+      count = 1;
     }
-    if (minus != 1) {
-      result.push(minus, arr[key])
-    } else result.push(arr[key])
-    
-      key = last;
-  }
-  
-  return result.join('')
+  })
+  return resStr;
 }
 
 module.exports = {

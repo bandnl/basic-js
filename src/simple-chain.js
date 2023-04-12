@@ -10,19 +10,22 @@ const chainMaker = {
     return this.result.length;
   },
   addLink(value) {
-    if (value) {
+    if (value !== undefined) {
       this.result.push(`( ${value} )`)
     } else this.result.push(`( )`);
     return this;
   },
   removeLink(position) {
-    if (position > 0 && position <= (this.result.length) &&  Number.isInteger(position)) {
+    if (typeof position === 'number' && Number.isInteger(position) && position > 0 && position <= (this.result.length)) {
       let carbage = this.result.splice (position - 1, 1);
-               return this;
-    } else throw new Error("You can't remove incorrect link!")
+      return this;
+    } else {
+      this.result = [];
+      throw new Error("You can't remove incorrect link!")
+    }
   },
   reverseChain() {
-    this.result.reverse ();
+    this.result.reverse();
     return this;
   },
   finishChain() {

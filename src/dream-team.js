@@ -20,15 +20,15 @@ function createDreamTeam(members) {
     for (let i=0; i<members.length; i++) {
       if (typeof members[i] === 'string') {
         members[i] = members[i].trimStart ();
-        let strOne = members[i].charAt (0);
+        let strOne = members[i].charAt(0).toUpperCase();
           strModif += strOne;
       } else continue
     }
       let letArr = strModif.split("").sort();
       let team = letArr.join('');
       return team.toUpperCase();
-  } else return false;
-} 
+  } else return false
+}
 
 module.exports = {
   createDreamTeam

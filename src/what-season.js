@@ -14,12 +14,10 @@ const { NotImplementedError } = require('../extensions/index.js');
 
  function getSeason(date) {
   if (date) {
-    if (typeof date.getDate() !== 'number' && typeof date.getMonth() !== 'number' && typeof date.getFullYear() !== 'number') {
+    if (!(date instanceof Date) || date.toString() == Date.prototype.toString.call(new Date())) {
       throw new Error("Invalid date!")
     } else {
-      let day = date.getDate(); 
       let month = date.getMonth();
-      let year = date.getFullYear(); 
       let season = '';
       (function () {
         switch (month) {
@@ -37,12 +35,12 @@ const { NotImplementedError } = require('../extensions/index.js');
 
           case 5:
           case 6:
-          case 7: 
+          case 7:
             season = 'summer';
             break;
 
-          case 8: 
-          case 9: 
+          case 8:
+          case 9:
           case 10:
             season = 'autumn';
             break;
@@ -51,12 +49,11 @@ const { NotImplementedError } = require('../extensions/index.js');
       return season;
     }
   } else {
-    let string = 'Unable to determine the time of year!';
-    return string;
+    return 'Unable to determine the time of year!';
   }
 }
 
-
+//typeof date === 'string' || typeof date.getDate() !== 'number' || typeof date.getMonth() !== 'number' || typeof date.getFullYear() !== 'number'
 
 /* function getSeason(date) {
   function Date (year, month, day) {

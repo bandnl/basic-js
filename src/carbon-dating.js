@@ -18,7 +18,7 @@ const HALF_LIFE_PERIOD = 5730;
  *
  */
 function dateSample(date) {
-  if (typeof date === 'string' && +date < 16 && +date > 0) {
+  if (typeof date === 'string' && +date < 15 && +date > 0) {
     let a = +date;
     let a0 = MODERN_ACTIVITY;
     let t_half = HALF_LIFE_PERIOD;
