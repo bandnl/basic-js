@@ -53,46 +53,6 @@ const { NotImplementedError } = require('../extensions/index.js');
   }
 }
 
-//typeof date === 'string' || typeof date.getDate() !== 'number' || typeof date.getMonth() !== 'number' || typeof date.getFullYear() !== 'number'
-
-/* function getSeason(date) {
-  function Date (year, month, day) {
-    this.day = day; 
-    this.month = month;
-    this.year = year;
-    this.display = function () {
-      let season = '';
-      switch (this.month) {
-        case 1:
-        case 2:
-        case 12:
-          season = 'winter';
-          break;
-
-        case 3:
-        case 4:
-        case 5:
-          season = 'spring';
-          break;
-        
-        case 6:
-        case 7:
-        case 8: 
-          season = 'summer';
-          break;
-
-        case 9: 
-        case 10: 
-        case 11:
-          season = 'autumn';
-          break;
-      }
-      return season;
-    }
-      return this.display();
-  }
-} */
-
 module.exports = {
   getSeason
 };
